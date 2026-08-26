@@ -13,11 +13,23 @@ No requiere instalación ni proceso de compilación.
 ## Archivos
 
 - `index.html`: centro documental y punto de entrada del proyecto.
+- `diagnostico-agosto-2026.html`: diagnóstico de agosto frente al mismo corte de julio; separa
+  estructura, eficiencia por campaña, creatividad, contexto deportivo y fricción móvil secundaria.
 - `informe-creativo.html`: informe de rendimiento creativo en Meta Ads, para el equipo creativo.
   Las miniaturas de los anuncios van embebidas como data URI, así que la página funciona sin
   conexión y sin carpeta de assets.
 - `styles.css`: sistema visual compartido, en Poppins, negro `#050505` / papel `#f4f4f1` y amarillo
   `#ffd400`, heredado de [Raza.do](https://github.com/DanielAdcom98/raza).
+
+### Parámetros de diseño
+
+- Ancho útil máximo de `1340px`, secciones de `52–92px` y tarjetas con radio base de `22px`.
+- Títulos de sección limitados a `4.05rem` y portadas a `5.8rem`; el cuerpo se mantiene entre
+  `0.8rem` y `1rem` según la función del texto.
+- Conclusiones y relaciones causales se presentan como flujos; comparaciones, métricas y acciones
+  usan retículas de dos a cuatro columnas antes de apilarse en móvil.
+- En pantallas estrechas los flujos pasan a lectura vertical, las listas vuelven a una columna y
+  se eliminan los saltos de línea decorativos.
 
 La única dependencia externa es Google Fonts (Poppins). Sin conexión, la página cae al stack de
 respaldo declarado en el CSS.
@@ -55,6 +67,17 @@ a nivel de anuncio. Ventana del 24 de mayo al 20 de agosto de 2026 para piezas y
 usa el valor que reporta el propio píxel, con la ventana de atribución por defecto de la cuenta.
 Son cifras de plataforma, no del sistema del cliente: sirven para comparar piezas entre sí,
 no como cierre contable.
+
+## Diagnóstico agosto 2026
+
+Compara el 1–24 de agosto contra el 1–24 de julio de 2026. Usa la API de Meta a nivel de
+campaña, anuncio, edad/género y plataforma; incorpora el historial de cambios de la cuenta,
+una prueba móvil de Lighthouse ejecutada el 25 de agosto y fuentes externas sobre el calendario
+deportivo y las prácticas Performance 5 de Meta.
+
+El informe se concentra en los registros atribuidos, la estructura de campañas y el costo por
+registro. La landing se presenta como una oportunidad de soporte, no como la explicación principal
+del deterioro.
 
 ## Aviso
 
