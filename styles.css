@@ -324,3 +324,65 @@ a.doc-card:hover::after{transform:rotate(45deg)}
 @media(max-width:980px){.do ul{grid-template-columns:repeat(2,minmax(0,1fr))}.message-paths{grid-template-columns:1fr}}
 @media(max-width:620px){.do ul{grid-template-columns:1fr}.doc-card,.doc-card-soon{min-height:300px}.message-path>div{grid-template-columns:1fr}.message-path i{transform:rotate(90deg)}}
 @media(max-width:520px){section{padding-left:18px;padding-right:18px}.hero h1,.hub-hero h1{font-size:1.85rem;line-height:.96}.hero-lead,.hub-lead{font-size:.9rem}}
+
+/* ===== informe de tipos de pieza ===== */
+/* ---------- tarjetas de tipo de pieza ---------- */
+.tipos{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px}
+.tipo{display:flex; flex-direction:column; border:1px solid var(--line); border-radius:26px;
+  background:var(--card); overflow:hidden}
+.tipo-thumb{background:var(--card-2)}
+.tipo-thumb img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block}
+.tipo-body{padding:20px; display:flex; flex-direction:column; gap:10px; flex:1}
+.tipo h3{margin:0; font-size:1.12rem; line-height:1.1; letter-spacing:-.03em; font-weight:800}
+.tipo p{margin:0; color:var(--muted); font-size:.87rem; line-height:1.5}
+.tipo-mix{display:grid; grid-template-columns:1fr 1fr; gap:1px; margin-top:auto;
+  background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.tipo-mix div{padding:12px; background:var(--card-2)}
+.tipo-mix span{display:block; color:var(--muted-2); font-size:.6rem; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase}
+.tipo-mix strong{display:block; margin-top:5px; font-size:1.1rem; font-weight:900; letter-spacing:-.03em}
+
+/* ---------- barras de indice ---------- */
+.idx{display:grid; gap:22px; padding-top:24px}
+.idx-row{display:grid; gap:8px}
+.idx-top{display:flex; justify-content:space-between; align-items:baseline; gap:14px}
+.idx-name{font-size:.94rem; font-weight:700}
+.idx-top strong{font-size:1.35rem; font-weight:900; letter-spacing:-.04em; font-variant-numeric:tabular-nums}
+.idx-track{position:relative; height:12px; border-radius:999px; background:var(--track); overflow:hidden}
+.idx-track i{display:block; height:100%; border-radius:inherit}
+.idx-ref{position:absolute; top:-4px; bottom:-4px; width:2px; background:var(--white); opacity:.65}
+.i-good{background:var(--yellow)} .i-mid{background:#8c8c8c} .i-bad{background:var(--red)}
+.n-good{color:var(--yellow)} .n-mid{color:#c6c6c6} .n-bad{color:var(--red)}
+.idx-foot{display:flex; justify-content:space-between; gap:14px; color:var(--muted-2);
+  font-size:.7rem; font-weight:600}
+
+/* ---------- rango dentro de un tipo ---------- */
+.spread{display:grid; gap:30px; padding-top:24px}
+.sp-row{display:grid; gap:12px}
+.sp-top{display:flex; justify-content:space-between; align-items:baseline; gap:14px}
+.sp-name{font-size:.94rem; font-weight:700}
+.sp-gap{color:var(--muted-2); font-size:.72rem; font-weight:600}
+.sp-track{position:relative; height:12px; border-radius:999px; background:var(--track); margin:14px 0 4px}
+.sp-ref{position:absolute; top:-9px; bottom:-9px; width:2px; background:var(--white); opacity:.55}
+.sp-bar{position:absolute; top:0; height:12px; border-radius:999px;
+  background:linear-gradient(90deg,var(--yellow),var(--red))}
+.sp-dot{position:absolute; top:-3px; width:18px; height:18px; margin-left:-9px; border-radius:50%;
+  border:3px solid var(--card)}
+.sp-lo{background:var(--yellow)} .sp-hi{background:var(--red)}
+.sp-dot em{position:absolute; left:50%; transform:translateX(-50%); top:-19px; font-style:normal;
+  font-size:.68rem; font-weight:800; color:var(--fg); font-variant-numeric:tabular-nums}
+.sp-foot{display:flex; justify-content:space-between; gap:16px; color:var(--muted-2);
+  font-size:.7rem; font-weight:600}
+
+/* ---------- comparacion de dos grupos ---------- */
+.vs{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+.vs-card{padding:clamp(22px,2.6vw,32px); border:1px solid var(--line); border-radius:var(--radius);
+  background:var(--card)}
+.vs-card.vs-win{border-color:var(--yellow)}
+.vs-num{font-size:clamp(2.6rem,6vw,4.4rem); line-height:.85; font-weight:900; letter-spacing:-.06em;
+  font-variant-numeric:tabular-nums}
+.vs-win .vs-num{color:var(--yellow)} .vs-lose .vs-num{color:var(--red)}
+.vs-card h3{margin:14px 0 8px; font-size:1.15rem; letter-spacing:-.03em; font-weight:800}
+.vs-card p{margin:0; color:var(--muted); font-size:.9rem; line-height:1.5}
+.vs-list{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:7px;
+  color:var(--muted-2); font-size:.78rem; font-weight:600}
