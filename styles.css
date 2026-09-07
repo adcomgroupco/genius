@@ -132,9 +132,12 @@ a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
 .slab h2{font-size:clamp(1.8rem,3.8vw,3rem); max-width:20ch}
 .slab .lede{color:var(--inv-secondary); margin-top:18px}
 .slab .divider{border-top-color:rgba(244,244,241,.85)}
-.calls{display:grid; gap:clamp(28px,3.4vw,48px); margin-top:clamp(34px,4vw,52px);
-  grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:720px){ .calls{grid-template-columns:1fr} }
+.calls{display:grid; gap:clamp(28px,3vw,44px); margin-top:clamp(34px,4vw,52px);
+  grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1040px){ .calls{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:700px){ .calls{grid-template-columns:1fr} }
+.call h3{min-height:3.7em}
+@media (max-width:700px){ .call h3{min-height:0} }
 .call{display:grid; gap:12px; align-content:start}
 .call h3{font-size:1.2rem; letter-spacing:-.03em; line-height:1.22}
 .call p{color:var(--inv-secondary); font-size:.93rem; line-height:1.55}
@@ -241,8 +244,11 @@ a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
   background:var(--ink); color:var(--paper); font-size:.78rem; font-weight:800;
   font-variant-numeric:tabular-nums}
 .work.is-win figure b{background:var(--accent); color:var(--accent-ink)}
-.work-body{padding-top:14px; display:grid; gap:7px}
-.work-body h3{font-size:.97rem; letter-spacing:-.03em; line-height:1.25}
+.work{min-width:0}
+.work-body{padding-top:14px; display:grid; gap:7px; min-width:0}
+/* los nombres de anuncio no tienen donde partir y ensanchan la columna */
+.work-body h3{font-size:.97rem; letter-spacing:-.03em; line-height:1.25;
+  overflow-wrap:anywhere}
 .work-kind{font-size:.78rem; color:var(--ink-muted); font-weight:600}
 .work-body p{font-size:.86rem; color:var(--ink-secondary); line-height:1.5}
 .work-stats{display:flex; gap:20px; padding-top:11px; border-top:1px solid var(--rule);
@@ -465,7 +471,9 @@ svg{display:block; width:100%; height:auto; overflow:visible}
 .p-body{padding:14px 0 0; display:flex; flex-direction:column; gap:7px; flex:1}
 .p-meta{display:flex; flex-wrap:wrap; gap:0; font-size:.78rem; color:var(--ink-muted); font-weight:600}
 .p-meta .tag + .tag::before{content:", "}
-.piece h3{font-size:.97rem; letter-spacing:-.03em; line-height:1.25}
+.piece{min-width:0}
+.piece h3{font-size:.97rem; letter-spacing:-.03em; line-height:1.25;
+  overflow-wrap:anywhere}
 .p-id{font-size:.78rem; color:var(--ink-muted); font-weight:600; letter-spacing:0;
   overflow-wrap:anywhere; line-height:1.35}
 .p-copy{font-size:.86rem; color:var(--ink-secondary); line-height:1.5}
