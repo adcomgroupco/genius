@@ -3,39 +3,13 @@
    Un solo tema: papel. Poppins. El amarillo de marca es el unico acento.
    ========================================================================= */
 
-:root{
-  /* --- marca (bloqueada) --- */
-  --ink:#050505;
-  --paper:#f4f4f1;
-  --accent:#ffd400;
+/* Los tokens NO se declaran aquí: los trae adcom-tokens.css, que este
+   documento ya enlaza antes de esta hoja. Este bloque los repetía con los
+   mismos nombres y había derivado (--ink-muted:#6b6b66, que el sistema
+   corrigió a #656560 por fallar sobre --sunken). Peor: al cargarse después,
+   aplanaba el sistema de dos suelos y .s-dark acababa pintando como .s-light.
+   Para cambiar un token, se cambia en adcom/sistema/adcom.css. */
 
-  /* --- neutros derivados del negro de marca --- */
-  --ink-secondary:#4a4a47;     /* 8.2:1 sobre papel */
-  --ink-muted:#6b6b66;         /* 5.0:1 sobre papel */
-  --raised:#fcfcfa;
-  --sunken:#e7e6e1;
-  --rule:rgba(5,5,5,.13);
-  --rule-strong:rgba(5,5,5,.88);
-  --accent-ink:#3d3300;        /* texto sobre amarillo, 9.4:1 */
-  --accent-deep:#7d6800;       /* amarillo legible sobre papel, 5.2:1 */
-
-  /* --- invertido: un unico momento en toda la pagina --- */
-  --inv-ground:#050505;
-  --inv-text:#f4f4f1;
-  --inv-secondary:#aaa9a4;
-  --inv-rule:rgba(244,244,241,.18);
-
-  /* --- semantica de dato --- */
-  --neg:#c2261c;
-
-  --measure:68ch;
-  --gutter:clamp(20px,5vw,72px);
-  --max:1240px;
-  --step:clamp(72px,8vw,128px);
-
-  --ease:cubic-bezier(.2,.7,.3,1);
-  color-scheme:light;
-}
 
 /* ---------------------------------------------------------------- base --- */
 *,*::before,*::after{box-sizing:border-box}
@@ -50,7 +24,7 @@ body{
     "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji";
   font-size:17px;
   line-height:1.6;
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:antialiased
 }
 
 /* las superficies que no dibujamos tambien son parte del diseno */
@@ -58,10 +32,10 @@ body{
 html{caret-color:var(--ink); accent-color:var(--ink)}
 ::-webkit-scrollbar{width:12px; height:12px}
 ::-webkit-scrollbar-track{background:var(--sunken)}
-::-webkit-scrollbar-thumb{background:#c6c5be; border:3px solid var(--sunken); border-radius:99px}
+::-webkit-scrollbar-thumb{background:#c6c5be; border:3px solid var(--sunken); border-radius:999px}
 ::-webkit-scrollbar-thumb:hover{background:var(--ink-secondary)}
 html{scrollbar-color:#c6c5be var(--sunken); scrollbar-width:thin}
-:focus-visible{outline:2px solid var(--ink); outline-offset:3px; border-radius:2px}
+:focus-visible{outline:2px solid var(--ink); outline-offset:3px; border-radius:0}
 
 img{display:block; max-width:100%}
 h1,h2,h3,h4{margin:0; font-weight:800; letter-spacing:-.045em; line-height:1.03; text-wrap:balance}
@@ -73,7 +47,7 @@ a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
 .skip-link{
   position:fixed; top:10px; left:10px; z-index:120; transform:translateY(-180%);
   background:var(--ink); color:var(--paper); padding:12px 18px;
-  font-weight:600; font-size:.85rem; text-decoration:none;
+  font-weight:600; font-size:.85rem; text-decoration:none
 }
 .skip-link:focus{transform:translateY(0)}
 
@@ -84,11 +58,11 @@ a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
   height:64px; padding-inline:var(--gutter);
   background:color-mix(in srgb, var(--paper) 86%, transparent);
   backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--rule);
+  border-bottom:1px solid var(--rule)
 }
 .wordmark{
   display:inline-flex; align-items:center; gap:9px; text-decoration:none;
-  font-weight:800; font-size:.92rem; letter-spacing:-.02em; white-space:nowrap;
+  font-weight:800; font-size:.92rem; letter-spacing:-.02em; white-space:nowrap
 }
 .wordmark i{width:9px; height:9px; border-radius:50%; background:var(--accent); flex:0 0 auto}
 .wordmark span{color:var(--ink-muted); font-weight:500}
@@ -117,11 +91,11 @@ a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
 .opening h1{font-size:clamp(2.3rem,6vw,5.4rem); max-width:17ch}
 .opening h1 em{font-style:normal; box-decoration-break:clone; -webkit-box-decoration-break:clone;
   padding-inline:.06em; background:linear-gradient(transparent 58%, var(--accent) 58%)}
-.opening .lede{margin-top:clamp(22px,3vw,32px); font-size:clamp(1.05rem,1.55vw,1.22rem)}
+.opening .lede{margin-top:clamp(22px,3vw,32px); font-size:clamp(1.05rem,1.55vw,1.22rem);max-width:var(--measure)}
 .opening-meta{
   display:flex; flex-wrap:wrap; gap:22px clamp(28px,4vw,56px);
   margin-top:clamp(34px,4vw,52px); padding-top:22px; border-top:1px solid var(--rule);
-  font-size:.82rem; color:var(--ink-muted);
+  font-size:.82rem; color:var(--ink-muted)
 }
 .opening-meta div{display:grid; gap:3px}
 .opening-meta b{font-weight:700; color:var(--ink); font-size:1.05rem;
@@ -191,10 +165,10 @@ a{color:inherit; text-decoration-thickness:1px; text-underline-offset:3px}
 .bar-track{position:relative; height:14px; background:var(--sunken)}
 .bar-track i{display:block; height:100%; background:var(--ink); transform-origin:left center}
 .bar-track i.is-over{background:var(--neg)}
-.bar-track i.is-best{background:var(--accent)}
+.bar-track i.is-best{background:var(--accent-fg)}
 .bar-mark{position:absolute; inset-block:-7px; width:1px; background:var(--rule-strong)}
 .bar-row:first-child .bar-mark::after{content:"100"; position:absolute; left:50%;
-  transform:translateX(-50%); top:-19px; font-size:.7rem; font-weight:700;
+  transform:translateX(-50%); top:-19px; font-size:.75rem; font-weight:700;
   color:var(--ink-muted); font-variant-numeric:tabular-nums}
 .bar-foot{display:flex; justify-content:space-between; gap:16px; font-size:.76rem; color:var(--ink-muted)}
 
@@ -374,7 +348,7 @@ tbody td b{color:var(--ink); font-weight:700}
 .s-head h2{font-size:clamp(1.9rem,4.2vw,3.4rem); max-width:20ch}
 .s-head > p{max-width:var(--measure); color:var(--ink-secondary); font-size:1.075rem}
 .s-head h2 em{font-style:normal; box-decoration-break:clone; -webkit-box-decoration-break:clone;
-  padding-inline:.06em; background:linear-gradient(transparent 58%, var(--accent) 58%)}
+  padding-inline:.06em;color:var(--fg)}
 @media (min-width:900px){
   .s-head{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(30px,5vw,80px);
     align-items:end}
@@ -422,7 +396,7 @@ tbody td b{color:var(--ink); font-weight:700}
 .chart-foot b{color:var(--ink)}
 .scroll{overflow-x:auto; padding-top:6px}
 .legend{display:flex; flex-wrap:wrap; gap:8px 22px; margin:16px 0 0; padding:0; list-style:none;
-  color:var(--ink-muted); font-size:.78rem; font-weight:500}
+  color:var(--ink-muted); font-size:var(--fs-body-min); font-weight:500}
 .legend li{display:inline-flex; align-items:center; gap:8px}
 .legend i{width:10px; height:10px; border-radius:50%; flex:0 0 auto}
 .i-ctr{background:var(--ink)} .i-reg{background:var(--accent-deep)}
@@ -430,19 +404,19 @@ tbody td b{color:var(--ink); font-weight:700}
 svg{display:block; width:100%; height:auto; overflow:visible}
 .dumb-svg{min-width:600px} .trend-svg{min-width:400px}
 .gl{stroke:var(--rule); stroke-width:1}
-.ax{fill:var(--ink-muted); font-size:10.5px; font-weight:600; letter-spacing:0}
+.ax{fill:var(--ink-muted); font-size:12px; font-weight:600; letter-spacing:0}
 .rl{fill:var(--ink); font-size:12.5px; font-weight:600; text-anchor:end; letter-spacing:-.01em}
 .db{stroke:var(--sunken); stroke-width:6; stroke-linecap:round}
 .d-ctr{fill:var(--ink); stroke:var(--paper); stroke-width:3}
 .d-reg{fill:var(--accent); stroke:var(--ink); stroke-width:2}
-.dv{font-size:11px; font-weight:700; font-variant-numeric:tabular-nums}
+.dv{font-size:12px; font-weight:700; font-variant-numeric:tabular-nums}
 .t-ctr{fill:var(--ink)} .t-reg{fill:var(--accent-deep)} .t-sep{fill:var(--ink-muted)}
 .tl{fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round}
 .td{stroke:var(--paper); stroke-width:2.5}
 .tl.s-reg{stroke:var(--ink)} .td.s-reg{fill:var(--ink)} .tv.s-reg{fill:var(--ink)}
 .tl.s-roas{stroke:var(--accent-deep)} .td.s-roas{fill:var(--accent-deep)}
 .tv.s-roas{fill:var(--accent-deep)}
-.tv{font-size:11px; font-weight:700; font-variant-numeric:tabular-nums}
+.tv{font-size:12px; font-weight:700; font-variant-numeric:tabular-nums}
 
 /* ranking heredado, con la gramatica de las barras nuevas */
 .ranks{display:grid; gap:clamp(18px,2.4vw,26px); padding-top:4px}
@@ -474,7 +448,7 @@ svg{display:block; width:100%; height:auto; overflow:visible}
 .piece{min-width:0}
 .piece h3{font-size:.97rem; letter-spacing:-.03em; line-height:1.25;
   overflow-wrap:anywhere}
-.p-id{font-size:.78rem; color:var(--ink-muted); font-weight:600; letter-spacing:0;
+.p-id{font-size:var(--fs-body-min); color:var(--ink-muted); font-weight:600; letter-spacing:0;
   overflow-wrap:anywhere; line-height:1.35}
 .p-copy{font-size:.86rem; color:var(--ink-secondary); line-height:1.5}
 .p-nums{display:flex; gap:18px; margin-top:auto; padding:11px 0 0; border:0;
@@ -580,7 +554,7 @@ svg{display:block; width:100%; height:auto; overflow:visible}
 /* semanas: la misma gramatica de barra que el resto del sistema */
 .week-list{display:grid; gap:14px; margin-top:clamp(20px,2.4vw,30px)}
 .week-row{display:grid; grid-template-columns:86px minmax(0,1fr) auto; gap:14px; align-items:center;
-  font-size:.8rem; color:var(--ink-muted); font-weight:600}
+  font-size:var(--fs-min); color:var(--ink-muted); font-weight:600}
 .week-track{height:12px; background:var(--sunken); border-radius:0; overflow:hidden}
 .week-track i{display:block; height:100%; background:var(--ink); border-radius:0}
 .week-row b, .week-row strong{color:var(--ink); font-weight:700; font-variant-numeric:tabular-nums;
