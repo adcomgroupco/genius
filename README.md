@@ -13,12 +13,12 @@ No requiere instalación ni proceso de compilación.
 ## Archivos
 
 - `index.html`: centro documental y punto de entrada del proyecto.
-- `diagnostico-agosto-2026.html`: diagnóstico de agosto frente al mismo corte de julio; separa
+- `informes/diagnostico-agosto-2026.html`: diagnóstico de agosto frente al mismo corte de julio; separa
   estructura, eficiencia por campaña, creatividad, contexto deportivo y fricción móvil secundaria.
-- `informe-creativo.html`: informe de rendimiento creativo en Meta Ads, para el equipo creativo.
+- `informes/informe-creativo.html`: informe de rendimiento creativo en Meta Ads, para el equipo creativo.
   Las miniaturas de los anuncios van embebidas como data URI, así que la página funciona sin
   conexión y sin carpeta de assets.
-- `top-piezas-ago-sep-2026.html`: top 3 de piezas por vertical (registro y apuesta, deportivas y casino)
+- `informes/top-piezas-ago-sep-2026.html`: top 3 de piezas por vertical (registro y apuesta, deportivas y casino)
   en agosto, en septiembre y en los dos meses, con el análisis de comunicación de cada ganadora y la
   propuesta de octubre. Cada pieza se muestra dentro de un mockup de celular. Lo genera
   `scripts/clients/geniusbet/creative_report.py` en el repo Ads-CLI.
@@ -41,7 +41,7 @@ respaldo declarado en el CSS.
 ## Para agregar un informe
 
 1. Crea el archivo `nombre-del-informe.html` reutilizando `<link rel="stylesheet" href="styles.css">`
-   y la cabecera de `informe-creativo.html` (la marca y el enlace «Índice» apuntan a `index.html`).
+   y la cabecera de `informes/informe-creativo.html` (la marca y el enlace «Índice» apuntan a `index.html`).
 2. Añade una `<a class="doc-card">` en el `.doc-grid` de `index.html`, con sus etiquetas, sus tres
    cifras de resumen y el pie.
 3. Sube el contador de `.hub-count` en `index.html`.

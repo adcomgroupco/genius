@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Genius Bet | Tablero de pauta</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/css/adcom-tokens.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:var(--ground);color:var(--fg);min-height:100vh;overflow-x:hidden;font-size:13px}
+.shell{position:fixed;inset:0 auto 0 0;width:210px;background:var(--shell-bg);color:var(--shell-fg);display:flex;flex-direction:column;padding:18px 12px;z-index:60}
+.brand{font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;padding:0 8px 16px;border-bottom:1px solid var(--shell-rule);margin-bottom:12px}
+.brand i{width:10px;height:10px;background:var(--accent);display:inline-block}
+.brand small{display:block;font-weight:400;font-size:11px;color:var(--shell-fg-muted)}
+.nav a{display:block;padding:9px 10px;border-radius:var(--radius-sm,8px);color:var(--shell-fg-muted);text-decoration:none;font-weight:500;cursor:pointer;margin-bottom:2px}
+.nav a:hover{background:var(--shell-active);color:var(--shell-fg)}
+.nav a.on{background:var(--shell-active);color:var(--shell-fg);box-shadow:inset 3px 0 0 var(--accent)}
+.shell .foot{margin-top:auto;font-size:11px;color:var(--shell-fg-muted);padding:8px}
+.main{margin-left:210px;min-width:0}
+.topbar{background:var(--raised);border-bottom:1px solid var(--rule);padding:10px 22px;position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.topbar h1{font-size:13px;font-weight:700;margin-right:6px}
+.sep{width:1px;height:18px;background:var(--rule)}
+.fg{display:flex;align-items:center;gap:5px}
+.fl{color:var(--fg-secondary);font-weight:500;white-space:nowrap}
+input[type=date],select{font:inherit;font-size:12px;padding:5px 8px;border:1px solid var(--rule);border-radius:var(--radius-sm,8px);background:var(--raised);color:var(--fg)}
+.qb{font:inherit;font-size:12px;font-weight:500;padding:4px 10px;border:1px solid var(--rule);background:var(--raised);border-radius:999px;cursor:pointer;color:var(--fg-secondary)}
+.qb:hover{border-color:var(--fg);color:var(--fg)} .qb.on{background:var(--fg);color:var(--ground);border-color:var(--fg)}
+.upd{margin-left:auto;color:var(--fg-muted);font-size:12px}
+.content{padding:18px 22px 60px;max-width:1500px}
+.view{display:none} .view.on{display:block}
+.aviso{background:var(--raised);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:var(--radius-sm,8px);padding:9px 12px;margin-bottom:14px;color:var(--fg-secondary);font-size:12px}
+.aviso b{color:var(--fg)}
+.sec{font-size:13px;font-weight:700;margin:20px 0 10px;display:flex;align-items:center;gap:8px}
+.sec:before{content:"";width:3px;height:13px;background:var(--accent)}
+.sec small{font-weight:400;color:var(--fg-muted);font-size:12px}
+.tag{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--sunken);color:var(--fg-secondary);padding:2px 7px;border-radius:999px}
+.tag.pend{background:var(--accent);color:var(--accent-ink)}
+.card{background:var(--raised);border:1px solid var(--rule);border-radius:var(--radius,12px)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kpi{padding:13px 14px}
+.kpi .l{font-size:12px;color:var(--fg-secondary);font-weight:600;margin-bottom:3px}
+.kpi .v{font-size:21px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.15}
+.kpi .s{font-size:11.5px;color:var(--fg-muted);margin-top:3px}
+.d-pos{color:var(--pos);font-weight:600} .d-neg{color:var(--neg);font-weight:600}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px} .grid3{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+@media(max-width:1100px){.grid2,.grid3{grid-template-columns:1fr}}
+@media(max-width:800px){.shell{position:static;width:auto;flex-direction:row;flex-wrap:wrap;padding:10px}.brand{border:0;padding:0 8px;margin:0}.shell .foot{display:none}.main{margin-left:0}.nav{display:flex;flex-wrap:wrap}}
+.chart{padding:12px 14px} .chart h3,.tbl h3{font-size:12px;font-weight:600;color:var(--fg-secondary);margin-bottom:8px}
+.chart .box{position:relative;height:260px}
+.tbl{padding:12px 14px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th{font-size:11px;font-weight:600;color:var(--fg-muted);text-align:right;padding:6px 8px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:7px 8px;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+th:first-child,td:first-child{text-align:left} td.n{white-space:normal;max-width:300px}
+tr.tot td{font-weight:700;border-top:1px solid var(--rule-strong);border-bottom:0}
+tr.parcial td{color:var(--fg-muted)}
+.heat{background:linear-gradient(90deg,var(--accent) var(--p,0%),transparent var(--p,0%))}
+.badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;background:var(--sunken);color:var(--fg-secondary);white-space:nowrap}
+.badge.act{background:#d9efe1;color:var(--pos)} .badge.rev{background:#f7dad7;color:var(--neg)} .badge.esc{background:#d9efe1;color:var(--pos)} .badge.ref{background:var(--accent);color:var(--accent-ink)}
+.ads{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:12px}
+.ad{padding:10px;display:flex;flex-direction:column;gap:7px}
+.ad .nm{font-weight:600;font-size:12px;word-break:break-word}
+.ad .cp{font-size:11px;color:var(--fg-muted);word-break:break-word}
+.ad .pv{position:relative;background:var(--sunken);border-radius:8px;overflow:hidden;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+.ad .pv img{width:100%;height:100%;object-fit:cover}
+.ad .pv.on{aspect-ratio:auto;height:610px;background:#fff} .ad .pv iframe{border:0;width:100%;height:610px;max-width:320px}
+.ad .play{position:absolute;bottom:8px;left:8px;right:8px;font:inherit;font-size:12px;font-weight:600;padding:6px;border:0;border-radius:8px;background:var(--fg);color:var(--ground);cursor:pointer}
+.ad .m{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px;font-size:11.5px}
+.ad .m span{color:var(--fg-muted)} .ad .m b{display:block;font-size:13px;font-variant-numeric:tabular-nums}
+.ad .tx{font-size:11px;color:var(--fg-secondary);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.vacio{padding:26px;text-align:center;color:var(--fg-muted)}
+.placeholder{padding:18px 16px;border:1px dashed var(--rule-strong);border-radius:12px;color:var(--fg-secondary);background:transparent}
+.placeholder b{color:var(--fg)}
+#carga{position:fixed;inset:0;background:var(--ground);z-index:100;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--fg-secondary)}
+</style>
+</head>
+<body>
+<div id="carga">Cargando datos de la hoja…</div>
+<aside class="shell">
+  <div class="brand"><i></i><div>Genius Bet<small>Tablero de pauta · El Salvador</small></div></div>
+  <nav class="nav" id="nav">
+    <a data-v="general" class="on">General</a>
+    <a data-v="registros">Registros y FTD</a>
+    <a data-v="apuestas">Apuestas</a>
+    <a data-v="anuncios">Anuncios</a>
+    <a data-v="optim">Optimización</a>
+  </nav>
+  <div class="foot">Boceto v0 · datos en vivo de la hoja de fuente</div>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <h1>Periodo</h1>
+    <div class="fg"><input type="date" id="d1"><span class="fl">a</span><input type="date" id="d2"></div>
+    <button class="qb" data-q="mes">Este mes</button><button class="qb" data-q="mesant">Mes pasado</button>
+    <button class="qb" data-q="7">7 días</button><button class="qb" data-q="30">30 días</button><button class="qb" data-q="todo">Todo</button>
+    <span class="upd" id="upd"></span>
+  </div>
+  <div class="content">
+
+  <section class="view on" id="v-general">
+    <div class="aviso" id="avisoDatos"></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="sec">Inversión, registros y FTD por día <small>registros por fecha de registro · FTD por fecha del FTD</small></div>
+    <div class="card chart"><div class="box"><canvas id="chDia"></canvas></div></div>
+    <div class="grid3">
+      <div>
+        <div class="sec">Inversión contra presupuesto por mes</div>
+        <div class="card tbl" id="tPres"></div>
+      </div>
+      <div>
+        <div class="sec">FTD por UTM <small>según fecha del FTD</small></div>
+        <div class="card tbl" id="tUtm"></div>
+      </div>
+    </div>
+    <div class="sec">Desglose por etapa <small>Meta, datos del pixel</small></div>
+    <div class="card tbl" id="tEtapa"></div>
+  </section>
+
+  <section class="view" id="v-registros">
+    <div class="aviso" id="avisoReg"></div>
+    <div class="sec">Registros y FTD por mes <small>cada uno por su propia fecha: el FTD de un mes puede venir de registros de meses anteriores</small></div>
+    <div class="card tbl" id="tMes"></div>
+    <div class="sec">Cohortes: ¿cuándo hacen el FTD los registrados de cada mes? <small>cuenta de usuarios por mes de registro y mes del FTD</small></div>
+    <div class="card tbl" id="tCohorte"></div>
+    <div class="sec">Campañas de registro</div>
+    <div class="card tbl" id="tCampReg"></div>
+    <div class="sec">Anuncios de registro <small>con más inversión en el periodo</small></div>
+    <div class="ads" id="adsReg"></div>
+  </section>
+
+  <section class="view" id="v-apuestas">
+    <div class="sec">Campañas de apuesta</div>
+    <div class="card tbl" id="tCampAp"></div>
+    <div class="sec">Stake, pago y GGR por producto <span class="tag pend">Pendiente</span></div>
+    <div class="placeholder"><b>Falta la pestaña agregada.</b> En STAKE los importes vienen mezclados (algunos como texto «$6,15», otros como número, y los de Sportbook en noviembre vienen vacíos), así que no se pueden sumar directo desde el tablero. El Apps Script va a armar una pestaña por día y producto con stake, pago, GGR y número de apuestas, y de ahí sale: GGR atribuido, retorno real sobre la inversión y concentración del stake (solo porcentaje, nunca por persona).</div>
+    <div class="sec">Anuncios de apuesta <small>con más inversión en el periodo</small></div>
+    <div class="ads" id="adsAp"></div>
+  </section>
+
+  <section class="view" id="v-anuncios">
+    <div class="topbar" style="position:static;border:1px solid var(--rule);border-radius:12px;margin-bottom:14px">
+      <div class="fg"><span class="fl">Estado</span><select id="fEst"><option value="act">Activos</option><option value="gasto" selected>Con gasto en el periodo</option><option value="todos">Todos</option></select></div>
+      <div class="fg"><span class="fl">Etapa</span><select id="fEtapa"></select></div>
+      <div class="fg"><span class="fl">Ordenar</span><select id="fOrd"><option value="inv">Inversión</option><option value="res">Resultados</option><option value="ctr">CTR</option><option value="nuevo">Más nuevos</option></select></div>
+      <span class="upd" id="nAds"></span>
+    </div>
+    <div class="ads" id="adsAll"></div>
+  </section>
+
+  <section class="view" id="v-optim">
+    <div class="aviso">Reglas de revisión sobre el periodo elegido. Son sugerencias para decidir, no cambios en la cuenta. Costo por resultado: costo por registro en campañas de registro, costo por apuesta en las de apuesta.</div>
+    <div class="sec">Ritmo del mes</div>
+    <div class="card tbl" id="tRitmo"></div>
+    <div class="sec">Anuncios para revisar o apagar <small>gastaron al menos US$ 40 y su costo supera 2 veces la mediana de su etapa, o gastaron sin resultados</small></div>
+    <div class="card tbl" id="tRev"></div>
+    <div class="sec">Anuncios para escalar <small>activos, costo menor al 70% de la mediana y al menos 5 resultados</small></div>
+    <div class="card tbl" id="tEsc"></div>
+    <div class="sec">Fatiga <small>activos cuyo CTR de los últimos 7 días cayó más de 25% frente a los 7 anteriores</small></div>
+    <div class="card tbl" id="tFat"></div>
+    <div class="sec">Sin entrega <small>activos sin gasto en los últimos 3 días de datos</small></div>
+    <div class="card tbl" id="tSin"></div>
+  </section>
+
+  </div>
+</div>
+
+<script>
+const SID = '1bl81VFv_xabxCWt9_n3ZVymxoGd7OyLPIDfQgLSEryY';
+const GID_USUARIOS = 1248941480, GID_MENSUAL = 331046525;
+const URLQ = p => 'https://docs.google.com/spreadsheets/d/' + SID + '/gviz/tq?tqx=out:csv&' + new URLSearchParams(p);
+const U = (tq) => URLQ({ gid: GID_USUARIOS, tq });
+
+const $ = s => document.querySelector(s);
+const nf0 = new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 });
+const nf2 = new Intl.NumberFormat('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const usd = (n, d) => (n == null || !isFinite(n)) ? '–' : 'US$ ' + (d === 2 ? nf2 : nf0).format(n);
+const int = n => (n == null || !isFinite(n)) ? '–' : nf0.format(n);
+const pct = n => (n == null || !isFinite(n)) ? '–' : nf2.format(n * 100).replace(/,00$/, '') + '%';
+const num = v => { const n = Number(String(v ?? '').replace(',', '.')); return isFinite(n) ? n : 0; };
+const div = (a, b) => b > 0 ? a / b : null;
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const pad = n => String(n).padStart(2, '0');
+// "2026-11-2" o "2026-11-02" -> "2026-11-02"
+const iso = s => { const m = /^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(String(s || '').trim()); return m ? m[1] + '-' + pad(m[2]) + '-' + pad(m[3]) : ''; };
+const addDays = (d, n) => { const t = new Date(d + 'T12:00:00Z'); t.setUTCDate(t.getUTCDate() + n); return t.toISOString().slice(0, 10); };
+const diffDays = (a, b) => Math.round((new Date(b + 'T12:00:00Z') - new Date(a + 'T12:00:00Z')) / 864e5);
+const fechaCorta = d => { if (!d) return '–'; const [y, m, dd] = d.split('-'); return +dd + ' ' + ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][+m - 1]; };
+const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const mesTxt = ym => { const [y, m] = ym.split('-'); return MESES[+m - 1] + ' ' + y; };
+
+function csv(url) {
+  return fetch(url).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status + ' en ' + url.slice(0, 90)); return r.text(); })
+    .then(t => Papa.parse(t, { skipEmptyLines: true }).data);
+}
+const cuerpo = filas => filas.slice(1);
+
+let D = {};      // datos cargados
+let meta = [];   // filas de Meta ya tipadas
+let prev = [];   // previews
+let charts = {};
+
+async function cargar() {
+  const [m, p, h, men, ctrl, regs, ftds, coh, regMes] = await Promise.all([
+    csv(URLQ({ sheet: 'META_ANUNCIO_DIA' })),
+    csv(URLQ({ sheet: 'PREVIEWS' })),
+    csv(URLQ({ sheet: 'HOMOLOGACIÓN' })),
+    csv(URLQ({ gid: GID_MENSUAL, tq: 'select *' })),
+    csv(URLQ({ sheet: 'META_CONTROL' })),
+    csv(U('select A, B, count(C) group by A, B')),
+    csv(U('select D, B, count(C) where D is not null group by D, B')),
+    csv(U('select year(A), month(A), year(D), month(D), count(C) where D is not null group by year(A), month(A), year(D), month(D)')),
+    csv(U('select year(A), month(A), count(C) group by year(A), month(A)')),
+  ]);
+
+  const etapaDe = {}; cuerpo(h).forEach(r => { etapaDe[r[0]] = r[1]; });
+  const etapa = c => etapaDe[c] || (/registro/i.test(c) ? 'Registro' : /apuesta/i.test(c) ? 'Apuesta' : 'Otra');
+  meta = cuerpo(m).map(r => ({
+    f: iso(r[0]), camp: r[2], conj: r[4], aid: r[5], anuncio: r[6],
+    inv: num(r[7]), imp: num(r[8]), alc: num(r[9]), clk: num(r[10]), lpv: num(r[11]), rep: num(r[12]),
+    reg: num(r[13]), comp: num(r[14]), val: num(r[15]), etapa: etapa(r[2]),
+  })).filter(r => r.f);
+  prev = cuerpo(p).map(r => ({
+    aid: r[0], anuncio: r[1], estado: r[2], creado: r[3], campana: r[5], conjunto: r[7], formato: r[8],
+    imagen: r[9], preview: r[10], destino: r[12], titulo: r[13], texto: r[14], iframe: r[15],
+  }));
+  D.regs = cuerpo(regs).map(r => ({ f: iso(r[0]), parent: r[1], n: num(r[2]) })).filter(r => r.f);
+  D.ftds = cuerpo(ftds).map(r => ({ f: iso(r[0]), parent: r[1], n: num(r[2]) })).filter(r => r.f);
+  D.coh = cuerpo(coh).map(r => ({ y: +r[0], m: +r[1], y2: +r[2], m2: +r[3], n: num(r[4]) }));
+  D.regMes = cuerpo(regMes).map(r => ({ ym: r[0] + '-' + pad(+r[1] + 1), n: num(r[2]) }));
+  D.pres = {};
+  cuerpo(men).forEach(r => {
+    const mm = /^(\d{1,2})\/(\d{1,2})\/(\d{4})/.exec(r[0] || ''); if (!mm) return;
+    D.pres[mm[3] + '-' + pad(mm[2])] = Number(String(r[2] || '').replace(/[^\d]/g, '')) || 0;
+  });
+  D.ctrl = cuerpo(ctrl);
+  D.lastMeta = meta.reduce((a, r) => r.f > a ? r.f : a, '');
+  D.lastReg = D.regs.reduce((a, r) => r.f > a ? r.f : a, '');
+  D.lastFtd = D.ftds.reduce((a, r) => r.f > a ? r.f : a, '');
+  D.firstMeta = meta.reduce((a, r) => (!a || r.f < a) ? r.f : a, '');
+}
+
+/* ---------- periodo ---------- */
+let P = { d1: '', d2: '' };
+function setPeriodo(d1, d2) { P = { d1, d2 }; $('#d1').value = d1; $('#d2').value = d2; render(); }
+function quick(q) {
+  const fin = D.lastMeta;
+  const mesIni = fin.slice(0, 7) + '-01';
+  if (q === 'mes') return setPeriodo(mesIni, fin);
+  if (q === 'mesant') { const u = addDays(mesIni, -1); return setPeriodo(u.slice(0, 7) + '-01', u); }
+  if (q === 'todo') return setPeriodo(D.firstMeta, fin);
+  setPeriodo(addDays(fin, -(+q - 1)), fin);
+}
+const enP = (f, d1 = P.d1, d2 = P.d2) => f >= d1 && f <= d2;
+const periodoAnterior = () => { const n = diffDays(P.d1, P.d2) + 1; return [addDays(P.d1, -n), addDays(P.d1, -1)]; };
+
+const sumaMeta = (d1, d2, filtro) => meta.filter(r => enP(r.f, d1, d2) && (!filtro || filtro(r))).reduce((a, r) => {
+  a.inv += r.inv; a.imp += r.imp; a.clk += r.clk; a.reg += r.reg; a.comp += r.comp; a.val += r.val; a.lpv += r.lpv; a.alc += r.alc; return a;
+}, { inv: 0, imp: 0, clk: 0, reg: 0, comp: 0, val: 0, lpv: 0, alc: 0 });
+const sumaClie = (arr, d1, d2) => arr.filter(r => enP(r.f, d1, d2)).reduce((a, r) => a + r.n, 0);
+const esPauta = p => /brand/i.test(p || '');
+
+function delta(a, b, inverso) {
+  if (b == null || b === 0 || a == null) return '';
+  const d = a / b - 1;
+  const bueno = inverso ? d < 0 : d > 0;
+  return ` <span class="${Math.abs(d) < 0.005 ? '' : bueno ? 'd-pos' : 'd-neg'}">${d > 0 ? '+' : ''}${(d * 100).toFixed(0)}%</span>`;
+}
+
+/* ---------- vistas ---------- */
+function kpi(l, v, s) { return `<div class="card kpi"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s || ''}</div></div>`; }
+
+function vGeneral() {
+  const [a1, a2] = periodoAnterior();
+  const m = sumaMeta(P.d1, P.d2), mp = sumaMeta(a1, a2);
+  const regC = sumaClie(D.regs, P.d1, P.d2), regCp = sumaClie(D.regs, a1, a2);
+  const ftd = sumaClie(D.ftds, P.d1, P.d2), ftdp = sumaClie(D.ftds, a1, a2);
+  const hastaFtd = P.d2 < D.lastFtd ? P.d2 : D.lastFtd;
+  const invFtd = sumaMeta(P.d1, hastaFtd).inv;
+  const cut = (P.d2 > D.lastFtd || P.d2 > D.lastReg);
+  const avisos = [];
+  avisos.push(`Meta al día hasta <b>${fechaCorta(D.lastMeta)}</b> (API). Registros y FTD del cliente llegan hasta <b>${fechaCorta(D.lastReg)}</b> (registro) y <b>${fechaCorta(D.lastFtd)}</b> (FTD); después de esas fechas no hay dato, no es cero.`);
+  avisos.push('«Registros pixel» es lo que reporta Meta; «registros del cliente» son usuarios nuevos de la plataforma. No son el mismo número.');
+  $('#avisoDatos').innerHTML = avisos.join('<br>');
+  $('#kpis').innerHTML = [
+    kpi('Inversión Meta', usd(m.inv), 'vs periodo anterior' + delta(m.inv, mp.inv)),
+    kpi('Registros pixel', int(m.reg), 'costo ' + usd(div(m.inv, m.reg), 2) + delta(div(m.inv, m.reg), div(mp.inv, mp.reg), true)),
+    kpi('Registros del cliente', int(regC), 'por fecha de registro' + (P.d2 > D.lastReg ? ' · hasta ' + fechaCorta(D.lastReg) : '') + (P.d2 <= D.lastReg ? delta(regC, regCp) : '')),
+    kpi('FTD', int(ftd), 'por fecha del FTD' + (P.d2 > D.lastFtd ? ' · hasta ' + fechaCorta(D.lastFtd) : '') + (P.d2 <= D.lastFtd ? delta(ftd, ftdp) : '')),
+    kpi('Costo por FTD', usd(div(invFtd, ftd), 2), 'inversión ' + fechaCorta(P.d1) + ' a ' + fechaCorta(hastaFtd)),
+    kpi('Apuestas pixel', int(m.comp), 'costo ' + usd(div(m.inv, m.comp), 2)),
+  ].join('');
+
+  // gráfico por día
+  const dias = []; for (let d = P.d1; d <= P.d2; d = addDays(d, 1)) dias.push(d);
+  const por = (arr, campo) => { const o = {}; arr.forEach(r => { o[r.f] = (o[r.f] || 0) + (campo ? r[campo] : r.n); }); return o; };
+  const mi = por(meta, 'inv'), mr = por(meta, 'reg'), cr = por(D.regs), cf = por(D.ftds);
+  const serie = (o, corte) => dias.map(d => (corte && d > corte) ? null : (o[d] || 0));
+  graf('chDia', {
+    type: 'bar',
+    data: { labels: dias.map(fechaCorta), datasets: [
+      { type: 'bar', label: 'Inversión (US$)', data: serie(mi), backgroundColor: 'rgba(5,5,5,.14)', yAxisID: 'y', order: 4 },
+      { type: 'line', label: 'Registros cliente', data: serie(cr, D.lastReg), borderColor: '#2a78d6', backgroundColor: '#2a78d6', yAxisID: 'y1', tension: .25, pointRadius: 2, spanGaps: false, order: 1 },
+      { type: 'line', label: 'FTD', data: serie(cf, D.lastFtd), borderColor: '#1baf7a', backgroundColor: '#1baf7a', yAxisID: 'y1', tension: .25, pointRadius: 2, spanGaps: false, order: 2 },
+      { type: 'line', label: 'Registros pixel', data: serie(mr), borderColor: '#eb6834', backgroundColor: '#eb6834', borderDash: [5, 4], yAxisID: 'y1', tension: .25, pointRadius: 0, order: 3 },
+    ] },
+    options: opcionesGraf('US$', 'Registros / FTD'),
+  });
+
+  // presupuesto por mes
+  const meses = Object.keys(D.pres).filter(k => k <= D.lastMeta.slice(0, 7) || D.pres[k]).sort();
+  const invMes = {}; meta.forEach(r => { const k = r.f.slice(0, 7); invMes[k] = (invMes[k] || 0) + r.inv; });
+  const mesAct = D.lastMeta.slice(0, 7);
+  let tp = D.pres, tInv = 0, tPr = 0;
+  const filas = meses.map(k => {
+    const inv = invMes[k] || 0, pr = D.pres[k] || 0; tInv += inv; tPr += pr;
+    let extra = '';
+    if (k === mesAct) { const [y, mo] = k.split('-'); const dm = new Date(+y, +mo, 0).getDate(); const dd = +D.lastMeta.slice(8); extra = ` <span class="tag">proy. ${usd(inv / dd * dm)}</span>`; }
+    return `<tr><td>${mesTxt(k)}${extra}</td><td>${usd(pr)}</td><td>${usd(inv)}</td><td>${usd(pr - inv)}</td><td class="${pr && inv / pr > 1.02 ? 'd-neg' : ''}">${pr ? pct(inv / pr) : '–'}</td></tr>`;
+  });
+  $('#tPres').innerHTML = `<table><tr><th>Mes</th><th>Presupuesto</th><th>Inversión</th><th>Remanente</th><th>% ejecutado</th></tr>${filas.join('')}<tr class="tot"><td>Total</td><td>${usd(tPr)}</td><td>${usd(tInv)}</td><td>${usd(tPr - tInv)}</td><td>${tPr ? pct(tInv / tPr) : '–'}</td></tr></table>`;
+
+  // FTD por UTM
+  const u = {};
+  D.ftds.filter(r => enP(r.f)).forEach(r => { (u[r.parent] ||= { ftd: 0, reg: 0 }).ftd += r.n; });
+  D.regs.filter(r => enP(r.f)).forEach(r => { (u[r.parent] ||= { ftd: 0, reg: 0 }).reg += r.n; });
+  const lu = Object.entries(u).sort((a, b) => b[1].ftd - a[1].ftd || b[1].reg - a[1].reg).slice(0, 12);
+  const mx = Math.max(1, ...lu.map(x => x[1].ftd));
+  $('#tUtm').innerHTML = `<table><tr><th>UTM (parent)</th><th>FTD</th><th>Registros</th></tr>${lu.map(([k, v]) => `<tr><td>${esc(k || '(sin UTM)')}${esPauta(k) ? ' <span class="tag">pauta</span>' : ''}</td><td class="heat" style="--p:${v.ftd / mx * 100}%">${int(v.ftd)}</td><td>${int(v.reg)}</td></tr>`).join('')}</table>`;
+
+  // por etapa
+  const e = {};
+  meta.filter(r => enP(r.f)).forEach(r => { const o = (e[r.etapa] ||= { inv: 0, imp: 0, clk: 0, reg: 0, comp: 0, val: 0 }); ['inv', 'imp', 'clk', 'reg', 'comp', 'val'].forEach(k => o[k] += r[k]); });
+  const tot = { inv: 0, imp: 0, clk: 0, reg: 0, comp: 0, val: 0 };
+  const fe = Object.entries(e).sort((a, b) => b[1].inv - a[1].inv).map(([k, o]) => { Object.keys(tot).forEach(x => tot[x] += o[x]); return filaEtapa(k, o); });
+  $('#tEtapa').innerHTML = `<table><tr><th>Etapa</th><th>Inversión</th><th>Impresiones</th><th>CTR</th><th>Registros pixel</th><th>Costo por registro</th><th>Apuestas pixel</th><th>Costo por apuesta</th><th>Valor de apuestas pixel</th></tr>${fe.join('')}${filaEtapa('Total', tot, true)}</table>`;
+}
+function filaEtapa(k, o, t) {
+  return `<tr class="${t ? 'tot' : ''}"><td>${esc(k)}</td><td>${usd(o.inv)}</td><td>${int(o.imp)}</td><td>${pct(div(o.clk, o.imp))}</td><td>${int(o.reg)}</td><td>${usd(div(o.inv, o.reg), 2)}</td><td>${int(o.comp)}</td><td>${usd(div(o.inv, o.comp), 2)}</td><td>${usd(o.val)}</td></tr>`;
+}
+
+function vRegistros() {
+  $('#avisoReg').innerHTML = `Registros por <b>fecha de registro</b> y FTD por <b>fecha del FTD</b>. Datos del cliente hasta <b>${fechaCorta(D.lastReg)}</b> (registros) y <b>${fechaCorta(D.lastFtd)}</b> (FTD). El último mes sale en gris porque está incompleto: su costo usa la inversión solo hasta la fecha de corte del dato del cliente. Meta (API) empieza el 1-feb-2026.`;
+  const reg = {}, ftd = {}, inv = {};
+  D.regMes.forEach(r => reg[r.ym] = r.n);
+  D.ftds.forEach(r => { const k = r.f.slice(0, 7); ftd[k] = (ftd[k] || 0) + r.n; });
+  meta.forEach(r => { const k = r.f.slice(0, 7); inv[k] = (inv[k] || 0) + r.inv; });
+  const ks = [...new Set([...Object.keys(reg), ...Object.keys(ftd)])].sort().reverse().slice(0, 14);
+  const ultimo = D.lastReg.slice(0, 7);
+  // en el mes incompleto la inversión se corta en la última fecha con dato del cliente (si no, el costo sale inflado)
+  const invHasta = (k, corte) => { const fin = corte && corte.slice(0, 7) === k ? corte : k + '-31'; return sumaMeta(k + '-01', fin).inv; };
+  const hayMeta = k => k >= D.firstMeta.slice(0, 7);
+  $('#tMes').innerHTML = `<table><tr><th>Mes</th><th>Registros nuevos</th><th>FTD</th><th>FTD / registros</th><th>Inversión Meta</th><th>Costo por registro</th><th>Costo por FTD</th></tr>${ks.map(k => {
+    const parcial = k >= ultimo, iR = invHasta(k, D.lastReg), iF = invHasta(k, D.lastFtd), m = hayMeta(k);
+    return `<tr class="${parcial ? 'parcial' : ''}"><td>${mesTxt(k)}${parcial ? ' <span class="tag">incompleto</span>' : ''}</td><td>${int(reg[k] || 0)}</td><td>${int(ftd[k] || 0)}</td><td>${pct(div(ftd[k] || 0, reg[k] || 0))}</td><td>${m ? usd(inv[k] || 0) : '–'}</td><td>${m ? usd(div(iR, reg[k] || 0), 2) : '–'}</td><td>${m ? usd(div(iF, ftd[k] || 0), 2) : '–'}</td></tr>`;
+  }).join('')}</table>`;
+
+  // cohortes
+  const c = {};
+  D.coh.forEach(r => {
+    const k = r.y + '-' + pad(r.m + 1), lag = (r.y2 * 12 + r.m2) - (r.y * 12 + r.m);
+    const o = (c[k] ||= { l0: 0, l1: 0, l2: 0, l3: 0, tot: 0 });
+    o.tot += r.n; o['l' + Math.min(3, Math.max(0, lag))] += r.n;
+  });
+  const kc = Object.keys(c).sort().reverse().slice(0, 12);
+  $('#tCohorte').innerHTML = `<table><tr><th>Mes de registro</th><th>Registros</th><th>FTD acumulado</th><th>% que hizo FTD</th><th>Mismo mes</th><th>+1 mes</th><th>+2 meses</th><th>+3 o más</th></tr>${kc.map(k => {
+    const o = c[k], r = reg[k] || 0, parcial = k >= ultimo;
+    return `<tr class="${parcial ? 'parcial' : ''}"><td>${mesTxt(k)}${parcial ? ' <span class="tag">en curso</span>' : ''}</td><td>${int(r)}</td><td>${int(o.tot)}</td><td class="heat" style="--p:${Math.min(100, div(o.tot, r) * 100 * 2.5)}%">${pct(div(o.tot, r))}</td><td>${int(o.l0)}</td><td>${int(o.l1)}</td><td>${int(o.l2)}</td><td>${int(o.l3)}</td></tr>`;
+  }).join('')}</table><div class="sec" style="margin:10px 0 0"><small>Mes de FTD = mes en que hizo su primer depósito. El detalle en días (cuántos días tardan) llega con la pestaña agregada.</small></div>`;
+
+  $('#tCampReg').innerHTML = tablaCampanas(['Registro', 'Prueba Deportiva', 'Prueba Casino'], 'reg');
+  cards('#adsReg', ['Registro', 'Prueba Deportiva', 'Prueba Casino'], 'reg', 6);
+}
+
+function vApuestas() {
+  $('#tCampAp').innerHTML = tablaCampanas(['Apuesta'], 'comp');
+  cards('#adsAp', ['Apuesta'], 'comp', 6);
+}
+
+function tablaCampanas(etapas, res) {
+  const o = {};
+  meta.filter(r => enP(r.f) && etapas.includes(r.etapa)).forEach(r => {
+    const a = (o[r.camp] ||= { inv: 0, imp: 0, clk: 0, lpv: 0, reg: 0, comp: 0, val: 0 });
+    ['inv', 'imp', 'clk', 'lpv', 'reg', 'comp', 'val'].forEach(k => a[k] += r[k]);
+  });
+  const l = Object.entries(o).sort((a, b) => b[1].inv - a[1].inv);
+  if (!l.length) return '<div class="vacio">Sin campañas con gasto en el periodo.</div>';
+  const tot = { inv: 0, imp: 0, clk: 0, lpv: 0, reg: 0, comp: 0, val: 0 };
+  const fila = (n, a, t) => `<tr class="${t ? 'tot' : ''}"><td class="n">${esc(n)}</td><td>${usd(a.inv)}</td><td>${int(a.imp)}</td><td>${pct(div(a.clk, a.imp))}</td><td>${int(a.lpv)}</td><td>${int(a[res])}</td><td>${usd(div(a.inv, a[res]), 2)}</td>${res === 'comp' ? `<td>${usd(a.val)}</td>` : `<td>${pct(div(a.reg, a.lpv))}</td>`}</tr>`;
+  const filas = l.map(([n, a]) => { Object.keys(tot).forEach(k => tot[k] += a[k]); return fila(n, a); });
+  return `<table><tr><th>Campaña</th><th>Inversión</th><th>Impresiones</th><th>CTR</th><th>Vistas de landing</th><th>${res === 'reg' ? 'Registros pixel' : 'Apuestas pixel'}</th><th>${res === 'reg' ? 'Costo por registro' : 'Costo por apuesta'}</th><th>${res === 'reg' ? 'Landing → registro' : 'Valor pixel'}</th></tr>${filas.join('')}${fila('Total', tot, true)}</table>`;
+}
+
+/* ---------- anuncios ---------- */
+function statsAnuncios(d1 = P.d1, d2 = P.d2) {
+  const o = {};
+  meta.filter(r => enP(r.f, d1, d2)).forEach(r => {
+    const a = (o[r.aid] ||= { aid: r.aid, anuncio: r.anuncio, camp: r.camp, etapa: r.etapa, inv: 0, imp: 0, clk: 0, reg: 0, comp: 0, val: 0, rep: 0 });
+    ['inv', 'imp', 'clk', 'reg', 'comp', 'val', 'rep'].forEach(k => a[k] += r[k]);
+  });
+  return o;
+}
+const resDe = a => a.etapa === 'Apuesta' ? a.comp : a.reg;
+function estadoTxt(est) { return est === 'ACTIVE' ? ['Activo', 'act'] : est === 'WITH_ISSUES' ? ['Con problemas', 'rev'] : ['Ya no corre', '']; }
+
+function cardAd(a, p) {
+  const [et, cl] = estadoTxt(p ? p.estado : '');
+  const res = resDe(a), lab = a.etapa === 'Apuesta' ? 'Apuestas' : 'Registros';
+  const img = p && p.imagen ? `<img loading="lazy" src="${esc(p.imagen)}" alt="">` : '<span class="t-mute">sin imagen</span>';
+  const btn = p && p.iframe ? `<button class="play" data-aid="${esc(a.aid)}">Ver preview</button>` : '';
+  return `<div class="card ad"><div class="pv" id="pv-${esc(a.aid)}">${img}${btn}</div>
+    <div><span class="badge ${cl}">${et}</span> <span class="badge">${esc(a.etapa)}</span></div>
+    <div class="nm">${esc(a.anuncio)}</div><div class="cp">${esc(a.camp)}</div>
+    <div class="m"><div><span>Inversión</span><b>${usd(a.inv)}</b></div><div><span>CTR</span><b>${pct(div(a.clk, a.imp))}</b></div>
+    <div><span>${lab}</span><b>${int(res)}</b></div><div><span>Costo</span><b>${usd(div(a.inv, res), 2)}</b></div></div>
+    ${p && p.texto ? `<div class="tx">${esc(p.texto)}</div>` : ''}</div>`;
+}
+function cards(sel, etapas, res, n) {
+  const pm = Object.fromEntries(prev.map(p => [p.aid, p]));
+  const l = Object.values(statsAnuncios()).filter(a => etapas.includes(a.etapa)).sort((a, b) => b.inv - a.inv).slice(0, n);
+  $(sel).innerHTML = l.length ? l.map(a => cardAd(a, pm[a.aid])).join('') : '<div class="vacio">Sin anuncios con gasto en el periodo.</div>';
+}
+function vAnuncios() {
+  const pm = Object.fromEntries(prev.map(p => [p.aid, p]));
+  const st = statsAnuncios();
+  const etapas = ['Todas', ...new Set(Object.values(st).map(a => a.etapa))];
+  const sel = $('#fEtapa'); if (!sel.options.length) { sel.innerHTML = etapas.map(e => `<option>${esc(e)}</option>`).join(''); sel.onchange = vAnuncios; }
+  const est = $('#fEst').value, ord = $('#fOrd').value, fe = sel.value;
+  // anuncios: los del periodo + los activos del catálogo de previews
+  const ids = new Set(Object.keys(st)); prev.forEach(p => { if (est !== 'gasto' && (est === 'todos' || p.estado === 'ACTIVE')) ids.add(p.aid); });
+  let l = [...ids].map(id => st[id] || { aid: id, anuncio: pm[id]?.anuncio, camp: pm[id]?.campana, etapa: (meta.find(r => r.aid === id) || {}).etapa || 'Otra', inv: 0, imp: 0, clk: 0, reg: 0, comp: 0, val: 0, rep: 0 });
+  l = l.filter(a => (est === 'act' ? pm[a.aid]?.estado === 'ACTIVE' : est === 'gasto' ? a.inv > 0 : true) && (fe === 'Todas' || a.etapa === fe));
+  const crea = a => pm[a.aid]?.creado || '';
+  l.sort((a, b) => ord === 'res' ? resDe(b) - resDe(a) : ord === 'ctr' ? (div(b.clk, b.imp) || 0) - (div(a.clk, a.imp) || 0) : ord === 'nuevo' ? crea(b).localeCompare(crea(a)) : b.inv - a.inv);
+  $('#nAds').textContent = l.length + ' anuncios';
+  $('#adsAll').innerHTML = l.length ? l.slice(0, 120).map(a => cardAd(a, pm[a.aid])).join('') : '<div class="vacio">Sin anuncios con estos filtros.</div>';
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('.play'); if (!b) return;
+  const p = prev.find(x => x.aid === b.dataset.aid); if (!p || !p.iframe) return;
+  const box = b.closest('.pv'); box.classList.add('on');
+  box.innerHTML = `<iframe src="${esc(p.iframe)}" scrolling="no" loading="lazy" title="Preview"></iframe>`;
+});
+
+/* ---------- optimización ---------- */
+function vOptim() {
+  const pm = Object.fromEntries(prev.map(p => [p.aid, p]));
+  // ritmo del mes
+  const k = D.lastMeta.slice(0, 7), [y, mo] = k.split('-'), dm = new Date(+y, +mo, 0).getDate(), dd = +D.lastMeta.slice(8);
+  const gast = sumaMeta(k + '-01', D.lastMeta).inv, pr = D.pres[k] || 0, rest = dm - dd;
+  const ult3 = sumaMeta(addDays(D.lastMeta, -2), D.lastMeta).inv / 3;
+  $('#tRitmo').innerHTML = `<table><tr><th>Mes</th><th>Presupuesto</th><th>Gastado</th><th>Días restantes</th><th>Gasto/día últimos 3</th><th>Proyección al ritmo actual</th><th>Diario para cerrar en presupuesto</th></tr>
+    <tr><td>${mesTxt(k)}</td><td>${usd(pr)}</td><td>${usd(gast)}</td><td>${rest}</td><td>${usd(ult3)}</td><td class="${pr && gast + ult3 * rest > pr * 1.03 ? 'd-neg' : ''}">${usd(gast + ult3 * rest)}</td><td>${rest ? usd((pr - gast) / rest) : '–'}</td></tr></table>`;
+
+  const st = Object.values(statsAnuncios()).filter(a => ['Registro', 'Apuesta'].includes(a.etapa));
+  const med = {};
+  ['Registro', 'Apuesta'].forEach(e => {
+    const c = st.filter(a => a.etapa === e && a.inv >= 20 && resDe(a) > 0).map(a => a.inv / resDe(a)).sort((x, y2) => x - y2);
+    med[e] = c.length ? c[Math.floor(c.length / 2)] : null;
+  });
+  const nombre = a => `<td class="n">${esc(a.anuncio)}<br><span class="t-mute" style="font-size:11px">${esc(a.camp)}</span></td>`;
+  const tabla = (filas, cols) => filas.length ? `<table><tr><th>Anuncio</th><th>Etapa</th><th>Estado</th><th>Inversión</th><th>Resultados</th><th>Costo</th><th>Mediana de la etapa</th>${cols || ''}</tr>${filas.join('')}</table>` : '<div class="vacio">Nada que marcar con las reglas actuales.</div>';
+  const fila = (a, extra) => { const [et, cl] = estadoTxt(pm[a.aid]?.estado); return `<tr>${nombre(a)}<td>${esc(a.etapa)}</td><td><span class="badge ${cl}">${et}</span></td><td>${usd(a.inv)}</td><td>${int(resDe(a))}</td><td>${usd(div(a.inv, resDe(a)), 2)}</td><td>${usd(med[a.etapa], 2)}</td>${extra || ''}</tr>`; };
+
+  const rev = st.filter(a => a.inv >= 40 && (resDe(a) === 0 || (med[a.etapa] && a.inv / resDe(a) > 2 * med[a.etapa]))).sort((a, b) => b.inv - a.inv);
+  $('#tRev').innerHTML = tabla(rev.map(a => fila(a, `<td><span class="badge rev">${resDe(a) === 0 ? 'Sin resultados' : 'Costo alto'}</span></td>`)), '<th>Marca</th>');
+  const esc2 = st.filter(a => pm[a.aid]?.estado === 'ACTIVE' && resDe(a) >= 5 && med[a.etapa] && a.inv / resDe(a) <= 0.7 * med[a.etapa]).sort((a, b) => (a.inv / resDe(a)) - (b.inv / resDe(b)));
+  $('#tEsc').innerHTML = tabla(esc2.map(a => fila(a, `<td><span class="badge esc">Escalar</span></td>`)), '<th>Marca</th>');
+
+  const u7 = statsAnuncios(addDays(D.lastMeta, -6), D.lastMeta), a7 = statsAnuncios(addDays(D.lastMeta, -13), addDays(D.lastMeta, -7));
+  const fat = Object.values(u7).filter(a => pm[a.aid]?.estado === 'ACTIVE' && a.imp >= 5000 && a7[a.aid] && a7[a.aid].imp >= 5000)
+    .map(a => ({ a, c1: a.clk / a.imp, c0: a7[a.aid].clk / a7[a.aid].imp })).filter(x => x.c0 > 0 && x.c1 / x.c0 < 0.75).sort((x, y2) => x.c1 / x.c0 - y2.c1 / y2.c0);
+  $('#tFat').innerHTML = fat.length ? `<table><tr><th>Anuncio</th><th>Inversión 7 días</th><th>CTR 7 días anteriores</th><th>CTR últimos 7 días</th><th>Cambio</th><th>Marca</th></tr>${fat.map(x => `<tr>${nombre(x.a)}<td>${usd(x.a.inv)}</td><td>${pct(x.c0)}</td><td>${pct(x.c1)}</td><td class="d-neg">${((x.c1 / x.c0 - 1) * 100).toFixed(0)}%</td><td><span class="badge ref">Refrescar pieza</span></td></tr>`).join('')}</table>` : '<div class="vacio">Ningún activo con caída fuerte de CTR.</div>';
+
+  const recientes = statsAnuncios(addDays(D.lastMeta, -2), D.lastMeta);
+  const sin = prev.filter(p => p.estado === 'ACTIVE' && !(recientes[p.aid] && recientes[p.aid].inv > 0));
+  $('#tSin').innerHTML = sin.length ? `<table><tr><th>Anuncio</th><th>Campaña</th><th>Conjunto</th><th>Creado</th></tr>${sin.map(p => `<tr><td class="n">${esc(p.anuncio)}</td><td class="n">${esc(p.campana)}</td><td class="n">${esc(p.conjunto)}</td><td>${esc(p.creado)}</td></tr>`).join('')}</table>` : '<div class="vacio">Todos los activos están gastando.</div>';
+}
+
+/* ---------- gráficos ---------- */
+function opcionesGraf(t1, t2) {
+  return { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { family: 'Poppins', size: 11 } } } },
+    scales: { x: { grid: { display: false }, ticks: { font: { size: 10 }, maxTicksLimit: 14 } },
+      y: { position: 'left', title: { display: true, text: t1, font: { size: 10 } }, grid: { color: 'rgba(5,5,5,.07)' }, beginAtZero: true },
+      y1: { position: 'right', title: { display: true, text: t2, font: { size: 10 } }, grid: { display: false }, beginAtZero: true } } };
+}
+function graf(id, cfg) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); }
+
+/* ---------- arranque ---------- */
+function render() { vGeneral(); vRegistros(); vApuestas(); vAnuncios(); vOptim(); }
+function vista(v) {
+  document.querySelectorAll('.view').forEach(s => s.classList.toggle('on', s.id === 'v-' + v));
+  document.querySelectorAll('#nav a').forEach(a => a.classList.toggle('on', a.dataset.v === v));
+  history.replaceState(null, '', '#' + v); window.scrollTo(0, 0);
+}
+document.querySelectorAll('#nav a').forEach(a => a.onclick = () => vista(a.dataset.v));
+document.querySelectorAll('.qb').forEach(b => b.onclick = () => quick(b.dataset.q));
+['d1', 'd2'].forEach(i => document.getElementById(i).onchange = () => { if ($('#d1').value && $('#d2').value) setPeriodo($('#d1').value, $('#d2').value); });
+['fEst', 'fOrd'].forEach(i => document.getElementById(i).onchange = vAnuncios);
+
+cargar().then(() => {
+  const act = D.ctrl.map(r => r[0] + ': ' + r[1] + ' ' + r[2]).join(' · ');
+  $('#upd').textContent = 'Meta: ' + (D.ctrl.find(r => r[0] === 'Anuncios por día')?.[2] || '–');
+  $('#upd').title = act;
+  quick('mes');
+  const h = location.hash.slice(1); if (h && document.getElementById('v-' + h)) vista(h);
+  $('#carga').remove();
+}).catch(e => { $('#carga').innerHTML = 'No se pudo cargar la hoja.<br><small>' + esc(e.message) + '</small>'; console.error(e); });
+</script>
+</body>
+</html>
